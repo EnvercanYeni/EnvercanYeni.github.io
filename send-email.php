@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST["message"];
     $cinsiyet = $_POST["cinsiyet"];
 
-    $to = "envercan4006@gmail.com";
+    $to = "m.yeni4040@gmail.com";
     $subject = "Yeni Bir Mesajınız Var: $subject";
     $body = "Ad: $name\nSoyad: $surname\nE-posta: $email\nCinsiyet: $cinsiyet\n\nMesaj:\n$message";
 
