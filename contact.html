@@ -175,11 +175,11 @@
                 <p class="open-sans-font mb-3">Benimle iletişime geçmekten çekinmeyin. Vizyonunuzun bir parçası olmak için yeni projeleri, yaratıcı fikirleri veya fırsatları tartışmaya her zaman açığım.</p>
                 <p class="open-sans-font custom-span-contact position-relative">
                     <i class="fa fa-envelope-open position-absolute"></i>
-                    <span class="d-block">mail Adresim</span>envercan4006@gmail.com
+                    <span class="d-block">Mail Adresim</span>envercan4006@gmail.com
                 </p>
                 <p class="open-sans-font custom-span-contact position-relative">
                     <i class="fa fa-phone-square position-absolute"></i>
-                    <span class="d-block">telefon numaram </span>0553 840 65 40
+                    <span class="d-block">Telefon numaram </span>0553 840 65 40
                 </p>
                 <ul class="social list-unstyled pt-1 mb-5">
                     <li class="instagram"><a title="İnstagram" href="https://www.instagram.com/envercn.yn/"><i class="fa fa-instagram"></i></a>
@@ -195,11 +195,13 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form class="contactform" method="post" action="http://slimhamdi.net/tunis/dark/php/process-form.php">
+                <form class="contactform" method="post" action="mail.php">
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
                                 <input type="text" name="name" placeholder="Ad">
+                            </div><div class="col-12 col-md-4">
+                                <input type="text" name="surname" placeholder="Soyad">
                             </div>
                             <div class="col-12 col-md-4">
                                 <input type="email" name="email" placeholder="e-Mail">
@@ -207,10 +209,25 @@
                             <div class="col-12 col-md-4">
                                 <input type="text" name="subject" placeholder="Konu">
                             </div>
-                            <div class="col-12">
-                                <textarea name="message" placeholder="Mesaj"></textarea>
-                                <button type="submit" class="btn btn-contact">Mesaj Gönder</button>
-                            </div>
+							<div class="col-12 col-md-4">
+								  <p>Cinsiyet:</p>
+								  <label for="erkek">Erkek</label>
+								  <input type="radio" id="erkek" name="cinsiyet" value="erkek">
+
+								  <label for="kadin">Kadın</label>
+								  <input type="radio" id="kadin" name="cinsiyet" value="kadin">
+							</div>
+                           <div class="col-12">
+    <textarea name="message" placeholder="Mesaj"></textarea>
+    <label>
+        <input type="checkbox" name="onay" required>
+        Mesajımın gönderilmesini onaylıyorum.
+    </label>
+							   <br>
+    <button type="submit" class="btn btn-contact">Mesaj Gönder</button>
+</div>
+
+							
                             <div class="col-12 form-message">
                                 <span class="output_message text-center font-weight-600 text-uppercase"></span>
                             </div>

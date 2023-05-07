@@ -96,7 +96,7 @@
         /* ----------------------------------------------------------- */
 
 		$(".contactform").on("submit", function() {
-			$(".output_message").text("Sending...");
+			$(".output_message").text("Gönderiliyor...");
 
 			var form = $(this);
 			$.ajax({
@@ -108,12 +108,12 @@
 						$(".form-inputs").css("display", "none");
 						$(".box p").css("display", "none");
 						$(".contactform").find(".output_message").addClass("success");
-						$(".output_message").text("Message Sent!");
+						$(".output_message").text("Başarıyla Gönderildi");
 					} else {
 						$(".tabs-container").css("height", "440px");
 
 						$(".contactform").find(".output_message").addClass("error");
-						$(".output_message").text("Error Sending!");
+						$(".output_message").text("Gönderilirken Hata Oluştu!");
 					}
 				}
 			});
