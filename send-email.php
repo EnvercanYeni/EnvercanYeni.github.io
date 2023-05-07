@@ -4,12 +4,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $surname = $_POST["surname"];
     $email = $_POST["email"];
     $subject = $_POST["subject"];
-    $cinsiyet = $_POST["cinsiyet"];
     $message = $_POST["message"];
+    $cinsiyet = $_POST["cinsiyet"];
 
     $to = "envercan4006@gmail.com";
-    $subject = "New message from contact form";
-    $body = "Name: $name\nSurname: $surname\nEmail: $email\nSubject: $subject\nCinsiyet: $cinsiyet\nMessage:\n$message";
+    $subject = "Yeni Bir Mesajınız Var: $subject";
+    $body = "Ad: $name\nSoyad: $surname\nE-posta: $email\nCinsiyet: $cinsiyet\n\nMesaj:\n$message";
 
     $headers = "From: $email";
 
