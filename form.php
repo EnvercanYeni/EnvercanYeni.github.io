@@ -1,38 +1,45 @@
 <?php
 
-// Veritabanı bilgilerini ayarla
+// Veritabanı bağlantı bilgileri
 $host = "localhost";
+$dbname = "portfolyo";
 $username = "root";
 $password = "";
-$database = "portfolyo";
 
-// Veritabanına bağlan
-$conn = mysqli_connect($host, $username, $password, $database);
-
-// Hata kontrolü yap
-if (!$conn) {
-    die("Veritabanı bağlantı hatası: " . mysqli_connect_error());
+// PDO kullanarak veritabanı bağlantısı kurma
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Veritabanı bağlantısı başarısız: " . $e->getMessage());
 }
 
-// Form verilerini al
-$name = $_POST['name'];
-$surname = $_POST['surname'];
-$email = $_POST['email'];
-$subject = $_POST['subject'];
-$cinsiyet = $_POST['cinsiyet'];
-$message = $_POST['message'];
+// Form verilerini alma
+$isim = $_POST["name"];
+$soyisim = $_POST["surname"];
+$mail = $_POST["mail"];
+$cinsiyet = $_POST["cinsiyet"];
+$konu = $_POST["subject"];
+$mesaj = $_POST["message"];
 
-// SQL sorgusu oluştur
-$sql = "INSERT INTO mesaj (ad, soyad, email, konu, cinsiyet, mesaj) VALUES ('$name', '$surname', '$email', '$subject', '$cinsiyet', '$message')";
+// SQL sorgusunu hazırlama
+$stmt = $pdo->prepare("INSERT INTO mesaj (isim, soyisim, mail, cinsiyet, konu, mesaj) VALUES (:isim, :soyisim, :mail, :cinsiyet, :konu, :mesaj)");
 
-// Sorguyu çalıştır ve sonucu kontrol et
-if (mysqli_query($conn, $sql)) {
-    echo "Mesajınız başarıyla gönderildi!";
+// Parametreleri bağlama ve sorguyu çalıştırma
+$stmt->bindParam(":isim", $isim);
+$stmt->bindParam(":soyisim", $soyisim);
+$stmt->bindParam(":mail", $mail);
+$stmt->bindParam(":cinsiyet", $cinsiyet);
+$stmt->bindParam(":konu", $konu);
+$stmt->bindParam(":mesaj", $mesaj);
+
+if ($stmt->execute()) {
+    echo "Mesaj veritabanına eklendi.";
 } else {
-    echo "Hata: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Mesaj veritabanına eklenirken hata oluştu.";
 }
 
-// Veritabanı bağlantısını kapat
-mysqli_close($conn);
+// Veritabanı bağlantısını kapatma
+$pdo = null;
 
 ?>
