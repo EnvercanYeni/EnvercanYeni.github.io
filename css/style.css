@@ -1809,3 +1809,56 @@ body.light hr.separator {
 .hidden {
   display: none;
 }
+
+
+.cinsiyet p {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.cinsiyet label {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.cinsiyet input[type="radio"] {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+@media (max-width: 767.98px) {
+  .cinsiyet p, .cinsiyet label, .cinsiyet input[type="radio"] {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+.memleket select {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.memleket select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #80bdff;
+}
+
