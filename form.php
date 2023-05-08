@@ -1,45 +1,24 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $surname = $_POST["surname"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+    $cinsiyet = $_POST["cinsiyet"];
 
-// Veritabanı bağlantı bilgileri
-$host = "localhost";
-$dbname = "portfolyo";
-$username = "root";
-$password = "";
+    // E-posta gövdesi oluştur
+    $email_body = "Ad: $name\n"
+                . "Soyad: $surname\n"
+                . "E-posta: $email\n"
+                . "Konu: $subject\n"
+                . "Cinsiyet: $cinsiyet\n\n"
+                . "Mesaj:\n$message";
 
-// PDO kullanarak veritabanı bağlantısı kurma
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    die("Veritabanı bağlantısı başarısız: " . $e->getMessage());
+    // E-posta gönderme işlemi
+    mail("envercan4006@gmail.com", "Form Mesajı", $email_body);
+
+    // Başarılı mesajı göster
+    echo "Mesajınız başarıyla gönderildi.";
 }
-
-// Form verilerini alma
-$isim = $_POST["name"];
-$soyisim = $_POST["surname"];
-$mail = $_POST["mail"];
-$cinsiyet = $_POST["cinsiyet"];
-$konu = $_POST["subject"];
-$mesaj = $_POST["message"];
-
-// SQL sorgusunu hazırlama
-$stmt = $pdo->prepare("INSERT INTO mesaj (isim, soyisim, mail, cinsiyet, konu, mesaj) VALUES (:isim, :soyisim, :mail, :cinsiyet, :konu, :mesaj)");
-
-// Parametreleri bağlama ve sorguyu çalıştırma
-$stmt->bindParam(":isim", $isim);
-$stmt->bindParam(":soyisim", $soyisim);
-$stmt->bindParam(":mail", $mail);
-$stmt->bindParam(":cinsiyet", $cinsiyet);
-$stmt->bindParam(":konu", $konu);
-$stmt->bindParam(":mesaj", $mesaj);
-
-if ($stmt->execute()) {
-    echo "Mesaj veritabanına eklendi.";
-} else {
-    echo "Mesaj veritabanına eklenirken hata oluştu.";
-}
-
-// Veritabanı bağlantısını kapatma
-$pdo = null;
-
 ?>
