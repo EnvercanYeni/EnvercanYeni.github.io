@@ -1,0 +1,7 @@
+User-agent: *
+Disallow:
+
+User-agent: Yandex
+Disallow: /
+
+Sitemap: https://envercanyeni.github.io/sitemap.xml
